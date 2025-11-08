@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="UTF-8"><title>CRWZ爱一帆 - 高清无码每日更新</title>
+<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+<style>body{background:#000;color:#fff;text-align:center;font-family:Arial;}h1{color:#ff0066;font-size:3em;}video{max-width:95%;margin:30px auto;border:5px solid #ff0066;border-radius:15px;box-shadow:0 0 20px #ff0066;}img{border-radius:10px;}</style>
+</head><body>
+<h1>CRWZ爱一帆AV站 - 每日无码新番</h1><div id="list"></div>
+<script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+<script>
+  fetch('videos.json').then(r=>r.json()).then(vids=>{
+    if(vids.length===0){document.getElementById('list').innerHTML='<h2>数据更新中...5分钟后刷新</h2>';return;}
+    vids.forEach(v=>{let d=document.createElement('div');d.innerHTML=
+    `<h2>${v.title}</h2><img src="${v.thumb}" width="350" loading="lazy"><br>
+    <video class="video-js vjs-fluid vjs-big-play-centered" controls preload="auto" data-setup='{}'>
+      <source src="${v.m3u8}" type="application/x-mpegURL">
+    </video><hr style="border:2px dashed #ff0066;">`;
+    document.getElementById('list').appendChild(d);});
+  }).catch(e=>document.getElementById('list').innerHTML='<h2>加载中...检查CF Pages部署</h2>');
+</script></body></html>
